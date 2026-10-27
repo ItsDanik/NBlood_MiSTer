@@ -3,13 +3,13 @@
 # installing it (hybrid/CLAUDE.md, "test on the MiSTer"). It runs what
 # ./package.sh makes, with the port's own danik_hybrid_launch.sh, but:
 #   - the game's folder is /tmp/nblood_test (gone after a reboot): the
-#     installed game's folder (games/dnk/NBlood/ on a USB drive or the SD
+#     installed game's folder (games/dnk/NBloodD/ on a USB drive or the SD
 #     card, or games/NBlood/ of the old layout) mirrored, its folders made anew and its files links to the
 #     installed ones, but those under 1MB (settings, saved games; COPY below)
 #     copies, so that what the game writes stays in /tmp; and the package
 #     over it
 #   - the core is in a hidden folder, _Other/.nblood_test/, loaded with the
-#     set name NBlood_TEST: the OSD settings are config/NBlood_TEST.CFG, at
+#     set name NBloodD_TEST: the OSD settings are config/NBloodD_TEST.CFG, at
 #     first a copy of the installed port's, and the game is told which game
 #     it is through MISTER_HYBRID_SET
 #   - the buttons are the core's defaults (its "jn"): the installed port's
@@ -26,7 +26,7 @@
 # TEST_ENV="VAR=value ..." in the environment goes to the game as well, e.g.
 # MISTER_HYBRID_PACE=1 to measure the frame pacing (see the log).
 # TEST_USB=1 runs it with the game's data on the first USB drive, as a player
-# who put the folder there: in games/dnk/.NBlood_test/ (games/dnk/.NBlood_empty/
+# who put the folder there: in games/dnk/.NBloodD_test/ (games/dnk/.NBloodD_empty/
 # for nodata), the installed data copied there at the first such test; the
 # package stays in /tmp (USB drives are noexec). "stop" removes it too.
 # Each copy shows how far it is: pv's percentage and time left for what goes
@@ -34,7 +34,7 @@
 # name of every file copied on the MiSTer.
 set -e
 cd "$(dirname "$0")/.."
-NAME=NBlood
+NAME=NBloodD
 LOWER=nblood
 HOST=${MISTER:?set MISTER=root@<address of the MiSTer>}
 USAGE="usage: tools/test_on_mister.sh <id of package/games.txt>|list|nodata|log|stop"

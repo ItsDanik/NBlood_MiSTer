@@ -1,11 +1,11 @@
 # The games of this core, a line each: <id>|<title> (hybrid/README.md,
 # "Several games in one core"). Each is a menu entry, _Other/dnk-<title>.mgl;
-# with several, its set name is NBlood_<id> (short: 31 characters at most in
-# all). The zip has these lines as games/dnk/NBlood/games.txt, from which the
+# with several, its set name is NBloodD_<id> (short: 31 characters at most in
+# all). The zip has these lines as games/dnk/NBloodD/games.txt, from which the
 # database makes the launcher's catalogue (hybrid/launcher/distribution.py).
 # One engine, three programs (nblood, rednukem, pcexhumed): the core's chooser
 # picks the game with MH_PickGame() and starts the program that runs it, in
-# its folder under games/dnk/NBlood/ (Blood, Redneck, PowerSlave; src/nblood.c).
+# its folder under games/dnk/NBloodD/ (Blood, Redneck, PowerSlave; src/nblood.c).
 # Shareware and demos have no entry: the full game's starts them.
 # Not here (Danik, 2026-10-27): Duke Nukem 3D and its add-ons (the EDuke32
 # core), Duke Nukem 64, NAM / NAPALM and WWII GI (Rednukem runs them too).

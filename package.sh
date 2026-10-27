@@ -1,9 +1,9 @@
 #!/bin/sh
-# Assemble the MiSTer release in dist/NBlood_<date>/ from the build outputs,
+# Assemble the MiSTer release in dist/NBloodD_<date>/ from the build outputs,
 # in the layout of the hybrid ports (hybrid/README.md, "Naming and layout"):
 #   _Other/dnk-<title>.mgl             a menu entry for each game (package/games.txt)
-#   _Other/dnk/dnk-NBlood_<date>.rbf    the core, not in the menu itself
-#   games/dnk/NBlood/                   the game, its logos in logos/, its
+#   _Other/dnk/dnk-NBloodD_<date>.rbf    the core, not in the menu itself
+#   games/dnk/NBloodD/                   the game, its logos in logos/, its
 #                                       pictures for tty2oled+'s display in
 #                                       oled/ and their details in info.txt
 #   games/dnk/SoundFonts/               GeneralUser GS and its licence, if the
@@ -18,8 +18,8 @@
 set -e
 cd "$(dirname "$0")"
 DATE=$(date +%Y%m%d)
-OUT=dist/NBlood_$DATE
-G=$OUT/games/dnk/NBlood
+OUT=dist/NBloodD_$DATE
+G=$OUT/games/dnk/NBloodD
 rm -rf "$OUT"
 mkdir -p "$OUT/_Other/dnk" "$G" "$OUT/Scripts/.danik_hybrid_ports"
 
@@ -33,13 +33,13 @@ cp hybrid/launcher/downloader_danik_hybrid_ports.ini "$OUT/"
 
 # the core, and a menu entry for each game: package/games.txt, a line each,
 # <id>|<title>. With several games each entry loads the core with the set
-# name NBlood_<id> (the game's settings and button mappings are its own);
+# name NBloodD_<id> (the game's settings and button mappings are its own);
 # one game has no set name. The title is the entry's name in the menu,
 # without what a file name cannot have.
-cp core/output_files/NBlood.rbf "$OUT/_Other/dnk/dnk-NBlood_$DATE.rbf"
+cp core/output_files/NBlood.rbf "$OUT/_Other/dnk/dnk-NBloodD_$DATE.rbf"
 GAMES=$(grep -v '^#' package/games.txt | grep -c '|')
 grep -v '^#' package/games.txt | grep '|' | while IFS='|' read -r id title; do
-    set_name=NBlood_$id
+    set_name=NBloodD_$id
     [ ${#set_name} -lt 32 ] || { echo "the set name $set_name is too long (31 at most)" >&2; exit 1; }
     file=$(printf %s "$title" | tr -d ':*?"<>|/\\' | tr -s ' ')
     if [ "$GAMES" -gt 1 ]; then
@@ -47,13 +47,13 @@ grep -v '^#' package/games.txt | grep '|' | while IFS='|' read -r id title; do
     else
         set_line=
     fi
-    printf '<mistergamedescription><rbf>_Other/dnk/dnk-NBlood</rbf>%s</mistergamedescription>\n' "$set_line" \
+    printf '<mistergamedescription><rbf>_Other/dnk/dnk-NBloodD</rbf>%s</mistergamedescription>\n' "$set_line" \
         > "$OUT/_Other/dnk-$file.mgl"
 done
 
 # the game, and its games for the database's catalogue (the launcher's
 # screen offers what that has) and for the launcher without one
-cp -r package/games/NBlood/. "$G/"
+cp -r package/games/NBloodD/. "$G/"
 grep -v '^#' package/games.txt | grep '|' > "$G/games.txt"
 # each game's logo, shown at its start (host version 17, hybrid/docs/game_logo.md):
 # package/logos/<id>.png, 440x200, as logos/<id>.mhl next to the program
@@ -88,7 +88,7 @@ cp nblood/package/common/gpl-2.0.txt "$G/LICENSE-nblood.txt"
 cp nblood/package/common/buildlic.txt "$G/LICENSE-build.txt"
 cp build/sdl/src/SDL2-*/LICENSE.txt "$G/LICENSE-sdl.txt"
 cp LICENSE "$G/LICENSE-gpl3.txt"
-rm -f "dist/NBlood_$DATE.zip"
-(cd "$OUT" && python3 -m zipfile -c "../NBlood_$DATE.zip" _Other games Scripts downloader_danik_hybrid_ports.ini)
+rm -f "dist/NBloodD_$DATE.zip"
+(cd "$OUT" && python3 -m zipfile -c "../NBloodD_$DATE.zip" _Other games Scripts downloader_danik_hybrid_ports.ini)
 find "$OUT" -type f | sort
-ls -la "dist/NBlood_$DATE.zip"
+ls -la "dist/NBloodD_$DATE.zip"

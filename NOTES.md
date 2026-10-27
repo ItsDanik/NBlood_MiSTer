@@ -13,7 +13,7 @@ git clone --recursive https://github.com/ItsDanik/NBlood_MiSTer.git
 cd NBlood_MiSTer
 ./build.sh              # ARM game binary  -> build/mister/nblood
 ./core/build_core.sh    # FPGA core (Quartus Lite 17.0.2) -> core/output_files/NBlood.rbf
-./package.sh            # release zip      -> dist/NBlood_YYYYMMDD.zip
+./package.sh            # release zip      -> dist/NBloodD_YYYYMMDD.zip
 ```
 
 The toolchain image (Debian bullseye, glibc 2.31 to match the MiSTer) is built from `hybrid/toolchain/` on first use. The first build also downloads and builds SDL2, SDL2_mixer and SDL2_net.
@@ -37,4 +37,4 @@ The toolchain image (Debian bullseye, glibc 2.31 to match the MiSTer) is built f
   cd <data folder> && MISTER_HYBRID_SHM=/tmp/shm <repository>/build/host/nblood
   ```
 - `MISTER=root@<address> tools/test_on_mister.sh <id>` tries the build on a MiSTer next to what is installed there, without installing it: from `/tmp`, with the installed game's folder mirrored there (what the game writes stays in `/tmp`) and its own OSD settings. `list` and `nodata` for the core started by itself and without data, `log` for the game's log, `stop` to remove all of it again.
-- `touch /tmp/nblood_nolaunch` on the MiSTer keeps the core loaded without starting the game, so you can start a development binary by hand (set `MISTER_HYBRID_CORE=NBlood`, and `MISTER_HYBRID_SET` for a game's set name). `/tmp/danik_hybrid_ports.log` shows what the launcher daemon did.
+- `touch /tmp/nblood_nolaunch` on the MiSTer keeps the core loaded without starting the game, so you can start a development binary by hand (set `MISTER_HYBRID_CORE=NBloodD`, and `MISTER_HYBRID_SET` for a game's set name). `/tmp/danik_hybrid_ports.log` shows what the launcher daemon did.

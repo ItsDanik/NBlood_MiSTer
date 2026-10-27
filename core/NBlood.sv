@@ -47,7 +47,9 @@ assign BUTTONS = 0;
 // The order of the options is the one in hybrid/README.md, "OSD".
 `include "build_id.v"
 localparam CONF_STR = {
-	"NBlood;;",
+	// NBloodD, not NBlood: MiSTer Frontier has a core called NBlood, and its
+	// MiSTer.ini line ([NBlood] main=Mister_NBlood) would take ours over too
+	"NBloodD;;",
 	"-;",
 	"O[122:121],Aspect ratio,Original,Full Screen,[ARC1],[ARC2];",
 	"O[125:123],Scale,Normal,V-Integer,Narrower HV-Integer,Wider HV-Integer,HV-Integer;",
@@ -133,7 +135,7 @@ localparam CONF_STR = {
 	// the MiSTer menu's own OK / Back (MH_MenuButtons()). The games know this
 	// list in its order (MISTER_J1_* in nblood/source/build/include/mister.h),
 	// the launcher repeats "jn" as MISTER_HYBRID_JN
-	// (package/games/NBlood/danik_hybrid_launch.sh).
+	// (package/games/NBloodD/danik_hybrid_launch.sh).
 	"J1,Fire,Open,Jump,Crouch,Next Weapon,Use Item,Map,Menu,Menu OK,Menu Back;",
 	"jn,R,B,A,L,Y,X,Select,Start;",
 	// Main_MiSTer's info box shows text n when hybrid_host asks for it

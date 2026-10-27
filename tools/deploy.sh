@@ -2,9 +2,8 @@
 # Package the build and copy it to a MiSTer over ssh, in the layout of the
 # hybrid ports. The core is not (re)loaded: load a game of NBlood from the
 # Test menu afterwards. Run Scripts/danik_hybrid_ports.sh on the MiSTer
-# once to set up the launcher. A MiSTer that has NBlood in the old layout
-# (games/NBlood/) gets it moved by the launcher (version 3) once this is
-# there. Each copy shows how far it is (pv: the percentage and the time
+# once to set up the launcher. The core's name is NBloodD (its folders too:
+# games/dnk/NBloodD/), not NBlood, which MiSTer Frontier's core has. Each copy shows how far it is (pv: the percentage and the time
 # left), or without pv the name of every file.
 #
 # The menu entries go to _Test/<title>.mgl, the main menu's Test, where every
@@ -49,17 +48,17 @@ send() {
 
 echo "Packaging..."
 ./package.sh > /dev/null
-OUT=dist/NBlood_$(date +%Y%m%d)
-G=/media/fat/games/dnk/NBlood
+OUT=dist/NBloodD_$(date +%Y%m%d)
+G=/media/fat/games/dnk/NBloodD
 echo "Copying $OUT to $HOST..."
-ssh "$HOST" "mkdir -p $G '$MENU' /media/fat/_Other/dnk /media/fat/Scripts/.danik_hybrid_ports && rm -f /media/fat/_Other/dnk/dnk-NBlood_*.rbf"
+ssh "$HOST" "mkdir -p $G '$MENU' /media/fat/_Other/dnk /media/fat/Scripts/.danik_hybrid_ports && rm -f /media/fat/_Other/dnk/dnk-NBloodD_*.rbf"
 # a running game keeps its binary busy: copy next to it, then swap
 # (scp would copy into a folder of that name, if something left one behind)
 ssh "$HOST" "rm -rf $G/NBlood.new"
-put "$OUT/games/dnk/NBlood/NBlood" "$G/NBlood.new"
+put "$OUT/games/dnk/NBloodD/NBlood" "$G/NBlood.new"
 ssh "$HOST" "mv -f $G/NBlood.new $G/NBlood"
 # everything else of the package (user files on the MiSTer are left alone)
-send "$OUT/games/dnk/NBlood" "$G" --exclude=./NBlood
+send "$OUT/games/dnk/NBloodD" "$G" --exclude=./NBlood
 send "$OUT/Scripts" /media/fat/Scripts
 send "$OUT/_Other" /media/fat/_Other --exclude='./*.mgl'
 # the menu entries, where MENU_DIR says, and the old ones of the other place
@@ -67,7 +66,7 @@ send "$OUT/_Other" /media/fat/_Other --exclude='./*.mgl'
 ENTRIES=$(mktemp -d)
 trap 'rm -rf "$ENTRIES"' EXIT
 chmod 755 "$ENTRIES"
-published=$(ssh "$HOST" "grep -qs '^NBlood|' /media/fat/Scripts/.danik_hybrid_ports/catalogue.txt && echo 1" || true)
+published=$(ssh "$HOST" "grep -qs '^NBloodD|' /media/fat/Scripts/.danik_hybrid_ports/catalogue.txt && echo 1" || true)
 for f in "$OUT"/_Other/dnk-*.mgl; do
     title=$(basename "$f" .mgl)
     title=${title#dnk-}
@@ -80,5 +79,5 @@ for f in "$OUT"/_Other/dnk-*.mgl; do
     echo "  menu entry: ${MENU#/media/fat/}/$PREFIX$title.mgl" >&2
 done | ssh "$HOST" 'while IFS= read -r f; do rm -f "$f"; done'
 send "$ENTRIES" "$MENU"
-ssh "$HOST" "chmod +x $G/NBlood $G/*.sh /media/fat/Scripts/danik_hybrid_ports.sh; ls -la $G /media/fat/_Other/dnk/dnk-NBlood_*.rbf; ls -la '$MENU'/*.mgl"
+ssh "$HOST" "chmod +x $G/NBlood $G/*.sh /media/fat/Scripts/danik_hybrid_ports.sh; ls -la $G /media/fat/_Other/dnk/dnk-NBloodD_*.rbf; ls -la '$MENU'/*.mgl"
 echo "Deployed."

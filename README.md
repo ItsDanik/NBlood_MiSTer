@@ -29,13 +29,13 @@ With `update_all` (Downloader 2.4 or newer, which update_all keeps up to date):
 1. Copy [`downloader_danik_hybrid_ports.ini`](https://raw.githubusercontent.com/ItsDanik/Hybrid_MiSTer/main/launcher/downloader_danik_hybrid_ports.ini) to the root of your SD card (`/media/fat`).
 2. Run `update_all`. That installs the launcher, **danik_hybrid_ports**, in `Scripts`.
 3. Run **danik_hybrid_ports** from the `Scripts` menu, tick the games you want and press *X: Apply*. They are installed, and update_all keeps them up to date.
-4. Copy **everything** in your game's folder to `/media/fat/games/dnk/NBlood/`: TODO which folders, copied whole, all the files as they are (never files that can be left out: `CLAUDE.md`, "players copy whole folders"). With several games, a table of each game and the files it is known by.
+4. Copy **everything** in your game's folder to `/media/fat/games/dnk/NBloodD/`: TODO which folders, copied whole, all the files as they are (never files that can be left out: `CLAUDE.md`, "players copy whole folders"). With several games, a table of each game and the files it is known by.
 5. Load the game from the `Other` menu, e.g. **dnk-Blood**, or from the `Hybrid Ports` folder if you moved the games there in the launcher.
 
 > [!NOTE]
-> The game data can go on a USB drive instead, into the same folder there (`/media/usb0/games/dnk/NBlood/`): the game looks for it there first, and then keeps its settings and saved games there as well. Everything else stays on the SD card.
+> The game data can go on a USB drive instead, into the same folder there (`/media/usb0/games/dnk/NBloodD/`): the game looks for it there first, and then keeps its settings and saved games there as well. Everything else stays on the SD card.
 
-The game's log is in `/media/fat/logs/dnk/NBlood/nblood.log`. TODO: where settings and saved games are.
+The game's log is in `/media/fat/logs/dnk/NBloodD/nblood.log`. TODO: where settings and saved games are.
 
 ## The launcher
 
@@ -91,10 +91,10 @@ Run it from the `Scripts` menu again whenever you want to change something. Its 
 | Select | TODO |
 | Start | Menu |
 
-Change the buttons in the OSD under *Define NBlood buttons*. *Menu OK* and *Menu Back* there are only needed for a spare button without a game function. While the OSD is open, the game gets no input.
+Change the buttons in the OSD under *Define NBloodD buttons*. *Menu OK* and *Menu Back* there are only needed for a spare button without a game function. While the OSD is open, the game gets no input.
 
 > [!WARNING]
-> A button left without a name in *Define NBlood buttons* does not reach the game at all, except L2/R2, L3/R3 and *Menu OK* / *Menu Back*. Name every button there, or leave the definition as it is. To go back to the default buttons, delete `config/inputs/NBlood_input_*_v3.map` on the SD card.
+> A button left without a name in *Define NBloodD buttons* does not reach the game at all, except L2/R2, L3/R3 and *Menu OK* / *Menu Back*. Name every button there, or leave the definition as it is. To go back to the default buttons, delete `config/inputs/NBloodD_input_*_v3.map` on the SD card.
 
 TODO, where the game's own menu can bind the gamepad's buttons, else delete: The game's own menu can change what each gamepad button does: TODO *its menu's path*. Change the actions there rather than in the OSD; a button the OSD leaves without a name never reaches the game, so its menu cannot bind it.
 
@@ -102,7 +102,7 @@ TODO, where the game names saved games or high scores, else delete: how to type 
 
 ## If something is wrong
 
-If the game stutters, the sound breaks up or something else is wrong, open the OSD while it happens and pick **Save Diagnostic Report**, the last line of the menu. The game keeps running; MiSTer's info box says the report is saved in `games/dnk/diagnostics/` on the SD card. Send that file (`NBlood_<date>_<time>.zip`) with a few words on what went wrong.
+If the game stutters, the sound breaks up or something else is wrong, open the OSD while it happens and pick **Save Diagnostic Report**, the last line of the menu. The game keeps running; MiSTer's info box says the report is saved in `games/dnk/diagnostics/` on the SD card. Send that file (`NBloodD_<date>_<time>.zip`) with a few words on what went wrong.
 
 The report has the setup (versions, the video and audio lines of `MiSTer.ini`, the OSD settings), how the last 60 seconds went, the game's log and a screenshot. Nothing else: no network settings, addresses, saved games or lists of your files.
 

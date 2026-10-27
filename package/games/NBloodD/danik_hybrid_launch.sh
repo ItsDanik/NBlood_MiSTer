@@ -9,11 +9,13 @@
 # (https://github.com/MiSTerOrganize/MiSTer_Frontier, GPL-3.0), with thanks
 # for the inspiration. Licensed under the GPL-3.0.
 
-CORE="NBlood"
+# NBloodD, not NBlood: MiSTer Frontier has a core called NBlood, and its
+# MiSTer.ini line ([NBlood] main=Mister_NBlood) would take ours over too
+CORE="NBloodD"
 GAMEDIR="/media/fat/games/dnk/$CORE"
 LOGDIR="/media/fat/logs/dnk/$CORE"
 LOG="$LOGDIR/nblood.log"
-# The game's data, settings and saved games: games/dnk/NBlood/ on a USB drive
+# The game's data, settings and saved games: games/dnk/NBloodD/ on a USB drive
 # if the player put the folder there (the first of usb0..usb7 that has it,
 # as Main_MiSTer looks for a core's games there before the SD card), else on
 # the SD card. The game runs in that folder. Its programs stay in GAMEDIR on

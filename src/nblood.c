@@ -11,7 +11,7 @@
 // would not tell nblood from NBlood, nor blood from the data folder Blood/.
 //
 // Each program has a folder of its own in the current folder
-// (games/dnk/NBlood/, DATADIR of danik_hybrid_launch.sh): Blood/ (Cryptic
+// (games/dnk/NBloodD/, DATADIR of danik_hybrid_launch.sh): Blood/ (Cryptic
 // Passage with it, as its release and Blood's GOG and Steam versions have
 // it), Redneck/ and PowerSlave/. Their settings files and saved games have
 // the same names, and Blood's and PowerSlave's data could too. The program
