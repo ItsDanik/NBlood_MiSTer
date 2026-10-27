@@ -1,0 +1,8 @@
+[submodule "hybrid"]
+	path = hybrid
+	url = https://github.com/ItsDanik/Hybrid_MiSTer.git
+	branch = main
+[submodule "nblood"]
+	path = nblood
+	url = https://github.com/NBlood/NBlood.git
+	branch = mister
