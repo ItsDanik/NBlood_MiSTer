@@ -1,4 +1,4 @@
-# NBloodD for MiSTer: notes
+# NBlood for MiSTer: notes
 
 How the port works and how it is built. For playing it, see the [README](README.md).
 

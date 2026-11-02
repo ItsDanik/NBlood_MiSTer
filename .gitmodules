@@ -4,5 +4,5 @@
 	branch = main
 [submodule "nblood"]
 	path = nblood
-	url = https://github.com/NBlood/NBlood.git
+	url = https://github.com/ItsDanik/NBlood.git
 	branch = mister

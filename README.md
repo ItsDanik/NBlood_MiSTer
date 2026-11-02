@@ -1,10 +1,10 @@
 <p align="center"><img src="docs/banner.png" alt="Blood" width="100%"></p>
 
-# NBloodD for MiSTer
+# NBlood for MiSTer
 
 Blood, Cryptic Passage, Redneck Rampage, Redneck Rampage: Rides Again and PowerSlave on [MiSTer FPGA](https://github.com/MiSTer-devel/Main_MiSTer/wiki) as a hybrid port.
 
-The games run on [NBlood](https://github.com/NBlood/NBlood), the source ports of Blood (1997), Redneck Rampage (1997) and PowerSlave (1996, known as Exhumed) by Nuke.YKT and its contributors, on EDuke32's Build engine, with the engine's classic software renderer. They run on the MiSTer's ARM CPU. The NBloodD FPGA core provides native 15kHz video (CRT, VGA and HDMI) at 320x200, 640x200, 320x240 or 640x240, 44.1kHz audio, a MIDI synthesizer and an FM chip for Blood's music, and keyboard, mouse and gamepad input with rumble. The two halves talk through shared DDR3 memory.
+The games run on [NBlood](https://github.com/NBlood/NBlood), the source ports of Blood (1997), Redneck Rampage (1997) and PowerSlave (1996, known as Exhumed) by Nuke.YKT and its contributors, on EDuke32's Build engine, with the engine's classic software renderer. They run on the MiSTer's ARM CPU. The NBlood FPGA core provides native 15kHz video (CRT, VGA and HDMI) at 320x200, 640x200, 320x240 or 640x240, 44.1kHz audio, a MIDI synthesizer and an FM chip for Blood's music, and keyboard, mouse and gamepad input with rumble. The two halves talk through shared DDR3 memory.
 
 > **Beta.** Expect rough edges and please report problems in the issues.
 >
@@ -71,7 +71,7 @@ Run it from the `Scripts` menu again whenever you want to change something. Its 
 |---|---|
 | Aspect ratio, Scale, Scandoubler Fx, Stereo Mix | as in other cores |
 | FPS Counter | shows the pictures per second in the top left corner |
-| HDMI Only | **Yes** if no CRT is connected: resolutions of 640x400 and more are then progressive instead of interlaced, and so is the core's own screen before the game, which moves at 60 pictures a second for a CRT and shows fine lines on HDMI without it. The analog output is switched off while one is shown, so that a 15kHz screen can never get such a signal. NBloodD has no such resolution, so nothing changes in the game. Not needed with `forced_scandoubler=1` (VGA monitor); not there with `direct_video=1` |
+| HDMI Only | **Yes** if no CRT is connected: resolutions of 640x400 and more are then progressive instead of interlaced, and so is the core's own screen before the game, which moves at 60 pictures a second for a CRT and shows fine lines on HDMI without it. The analog output is switched off while one is shown, so that a 15kHz screen can never get such a signal. NBlood has no such resolution, so nothing changes in the game. Not needed with `forced_scandoubler=1` (VGA monitor); not there with `direct_video=1` |
 | CRT Options | **Horizontal Size**: the picture's width<br>**Horizontal Pos**: moves it left or right<br>**Vertical Pos**: moves it up or down<br>**HUD (Top)**: moves the game's messages 0 to 24 lines off the top edge (default 0), at 240 lines<br>**HUD (Bottom)**: lifts the status bar and the weapon 0 to 24 lines off the bottom edge (default 0), at 240 lines<br><br>For a 15kHz screen: fits the picture to it and keeps the HUD out of the overscan. HDMI is not affected; not there with `forced_scandoubler=1` |
 | Resolution | **320x200**: as the originals (default)<br>**640x200**: twice the detail across, same picture size<br>**320x240**: the view fills the whole screen<br>**640x240**: both<br><br>Always at 15kHz. With 240 lines the HUD is drawn over the view at the *HUD* margins; menus and pictures stay at 200 lines, centred. Applies at once |
 | L. Stick Sensitivity, R. Stick Sensitivity | how fast the left stick (walk, strafe) and the right stick (turn, look) move the player, 25% to 300%. They apply at once, on top of the sensitivity in the game's own menu |
