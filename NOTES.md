@@ -1,8 +1,18 @@
-# NBlood for MiSTer: notes
+# NBloodD for MiSTer: notes
 
 How the port works and how it is built. For playing it, see the [README](README.md).
 
-TODO: sections on how this port works that are its own (ECWolf: *Frame pacing*), or none (`hybrid/docs/readme.md`).
+## Three programs
+
+The NBlood project is three programs on one engine: `nblood` (Blood and Cryptic Passage), `rednukem` (Redneck Rampage and Rides Again) and `pcexhumed` (PowerSlave). `NBlood` (`src/nblood.c`) is what the launcher starts: it picks the game with `MH_PickGame()` and becomes the program that runs it, in that game's folder (`Blood/`, `Redneck/RR/`, `Redneck/RRRA/`, `PowerSlave/`), because the programs' settings files and saved games have the same names. `nblood` is called `nblood-bin` in `build/` and on the SD card: exFAT does not tell `nblood` from `NBlood`.
+
+The core is called NBloodD, not NBlood, because MiSTer Frontier has a core called NBlood, and the line its installer puts in `MiSTer.ini` would take over any core of that name.
+
+## Music
+
+Blood's music is MIDI. With the OSD's *Music* on **MIDI** (the default) it is played by a SoundFont 2 synthesizer in the FPGA core, with GeneralUser GS, which comes with the port, or a SoundFont of your own. With *Music* on **FM chip**, it plays as an AdLib or Sound Blaster card did, on a YM3812 (OPL2) in the FPGA core, [JTOPL](https://github.com/jotego/jtopl).
+
+**With an [MT32-pi](https://github.com/dwhinham/mt32-pi)** on the MiSTer's user port and *Music* on MIDI, the music goes to it instead of the synthesizer. The OSD then shows its lines: *MT32-pi* on or off, its synth and ROM, its SoundFont (*Pi's own* keeps the one the Pi has chosen) and *Reset Hanging Notes*.
 
 ## Building
 
@@ -11,7 +21,7 @@ Everything builds in Docker on a Linux PC.
 ```sh
 git clone --recursive https://github.com/ItsDanik/NBlood_MiSTer.git
 cd NBlood_MiSTer
-./build.sh              # ARM game binary  -> build/mister/nblood
+./build.sh              # ARM game binaries -> build/mister/
 ./core/build_core.sh    # FPGA core (Quartus Lite 17.0.2) -> core/output_files/NBlood.rbf
 ./package.sh            # release zip      -> dist/NBloodD_YYYYMMDD.zip
 ```
